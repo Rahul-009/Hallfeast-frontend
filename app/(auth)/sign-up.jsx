@@ -1,6 +1,6 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import { useState } from "react";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 
 import images from "@/constants/images";
 import SignLayout from "@/components/SignLayout";
@@ -16,7 +16,9 @@ const SignUp = () => {
 
   const [isSubmitting, setisSubmitting] = useState(false);
 
-  const submit = () => {};
+  const submit = () => {
+    router.replace("/(tab)/plans");
+  };
 
   return (
     <SignLayout image={images.SignUpBg}>

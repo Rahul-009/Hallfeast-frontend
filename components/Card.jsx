@@ -19,7 +19,7 @@ const Card = ({ plan, days, cost, isActive, onPress }) => {
                 isActive ? "text-white" : "text-black"
               }`}
             >
-              {plan} Plan
+              {plan}ly Plan
             </Text>
             <Text
               className={`text-sm text-gray-500 ${
@@ -44,7 +44,7 @@ const Card = ({ plan, days, cost, isActive, onPress }) => {
               isActive ? "text-white" : "text-black"
             }`}
           >
-            Per month
+            Per {plan}
           </Text>
           <Text
             className={`text-xl font-bold text-gray-800 ${

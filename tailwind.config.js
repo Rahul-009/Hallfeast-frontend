@@ -5,7 +5,10 @@ module.exports = {
   presets: [require("nativewind/preset")],
   theme: {
     extend: {
-      fontFamily: {},
+      fontFamily: {
+        iThin: ["Inter-thin", "sans-serif"],
+        iItalic: ["Inter-italic", "sans-serif"],
+      },
       colors: {
         primary: {
           100: "#D5F7C9",

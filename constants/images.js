@@ -11,7 +11,8 @@ import facebook from "../assets/images/icons/facebook.png";
 import apple from "../assets/images/icons/apple.png";
 import SignInBg from "../assets/images/dishes/image 17.png";
 import SignUpBg from "../assets/images/dishes/image 18.png";
-
+import chevronRight from "../assets/images/icons/chevron-right.png";
+import avatar from "../assets/images/avatar.png";
 import applePay from "../assets/images/icons/applePay.png";
 import cart from "../assets/images/icons/cart.png";
 
@@ -26,4 +27,6 @@ export default {
   arrowLeft,
   SignInBg,
   SignUpBg,
+  chevronRight,
+  avatar,
 };

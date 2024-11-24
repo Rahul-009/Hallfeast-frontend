@@ -5,7 +5,7 @@ import images from "../../constants/images";
 import FormField from "../../components/FormField";
 import CustomButton from "../../components/CustomButton";
 import { useState } from "react";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import SignLayout from "@/components/SignLayout";
 
 const SignIn = () => {
