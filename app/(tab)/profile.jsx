@@ -22,7 +22,7 @@ export default function ProfileScreen() {
     setIsPushNotificationEnabled(!isPushNotificationEnabled);
 
   const handleBack = () => {
-    console.log("Go Back");
+    router.replace("/(tab)/home");
   };
 
   const handlePress = () => {

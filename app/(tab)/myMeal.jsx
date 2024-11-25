@@ -14,24 +14,29 @@ const cartData = [
     title: "Mexican Vegetables and Salad",
     subtitle: "Chicken Fried with Khichuri",
     quantity: 2,
-    image: images.dish2, 
+    image: images.dish2,
   },
   {
     id: 2,
     title: "Sahi Polao and Korma Deshi Cuisine",
     subtitle: "Chicken Fried with Khichuri",
     quantity: 1,
-    image: images.dish1, 
+    image: images.dish1,
   },
 ];
 
-const Cart = () => {
+const myMeal = () => {
   const [activeItem, setactiveItem] = useState(1);
 
   return (
     <SafeAreaView className="h-screen flex justify-between">
       <View>
-        <Header title="Cart" />
+        <Header
+          title="My Meals"
+          handleBack={() => {
+            router.replace("/(tab)/home");
+          }}
+        />
         {cartData.map((item) => (
           <CartItem
             key={item.id}
@@ -46,9 +51,9 @@ const Cart = () => {
           />
         ))}
       </View>
-      <CustomButton title="Checkout" containerStyles="m-4" />
+      {/* <CustomButton title="Checkout" containerStyles="m-4" /> */}
     </SafeAreaView>
   );
 };
 
-export default Cart;
+export default myMeal;

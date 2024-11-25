@@ -7,9 +7,10 @@ const TabsLayout = () => {
     <Stack>
       <Stack.Screen name="home" options={{ headerShown: false }} />
       <Stack.Screen name="plans" options={{ headerShown: false }} />
-      <Stack.Screen name="cart" options={{ headerShown: false }} />
+      <Stack.Screen name="myMeal" options={{ headerShown: false }} />
       <Stack.Screen name="profile" options={{ headerShown: false }} />
       <Stack.Screen name="checkout" options={{ headerShown: false }} />
+      <Stack.Screen name="addMeal" options={{ headerShown: false }} />
     </Stack>
   );
 };

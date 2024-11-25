@@ -17,7 +17,7 @@ const SignUp = () => {
   const [isSubmitting, setisSubmitting] = useState(false);
 
   const submit = () => {
-    router.replace("/(tab)/plans");
+    router.replace("/(tab)/home");
   };
 
   return (

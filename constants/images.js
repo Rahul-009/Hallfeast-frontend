@@ -18,6 +18,14 @@ import visa from "../assets/images/icons/visa.png";
 import bkash from "../assets/images/icons/bkash.png";
 import applePay from "../assets/images/icons/applePay.png";
 
+import grid from "../assets/images/icons/grid.png";
+import notification from "../assets/images/icons/notification.png";
+import down from "../assets/images/icons/chevron-down.png";
+import location from "../assets/images/icons/location.png";
+
+import home from "../assets/images/icons/home.png";
+import catering from "../assets/images/icons/catering.png";
+import profile from "../assets/images/icons/avatar.png";
 
 //dishes
 import SignInBg from "../assets/images/dishes/image 17.png";
@@ -46,4 +54,11 @@ export default {
   bkash,
   applePay,
   visa,
+  grid,
+  notification,
+  catering,
+  home,
+  profile,
+  down,
+  location,
 };

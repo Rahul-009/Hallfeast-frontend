@@ -17,7 +17,9 @@ const SignIn = () => {
 
   const [isSubmitting, setisSubmitting] = useState(false);
 
-  const submit = () => {};
+  const submit = () => {
+    router.replace("/(tab)/home");
+  };
 
   return (
     <SignLayout image={images.SignInBg}>

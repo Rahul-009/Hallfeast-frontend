@@ -1,13 +1,18 @@
 import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { router } from "expo-router";
 
 import images from "@/constants/images";
+
+import NavItem from "../../components/NavItem";
+import MenuCard from "../../components/MenuCard";
 
 const Home = () => {
   // State to track the selected date
   const [selectedDate, setSelectedDate] = useState("25");
   const [meal, setMeal] = useState("lunch");
+  const [navActive, setNavActive] = useState("home"); // Track active tab
 
   // Example data for dates (you can generate dynamically as needed)
   const dates = [
@@ -21,14 +26,30 @@ const Home = () => {
   ];
 
   const meals = [
-    { meal: "lunch", image: images.dish1 },
-    { meal: "dinner", image: images.dish1 },
-    { meal: "breakfast", image: images.dish1 },
-    { meal: "snacks", image: images.dish1 },
+    { title: "Lunch", image: images.dish1 },
+    { title: "Dinner", image: images.dish1 },
+    { title: "Breakfast", image: images.dish1 },
+    { title: "Snacks", image: images.dish1 },
+  ];
+
+  const item = [
+    { nav: "home", image: images.home },
+    { nav: "myMeal", image: images.catering },
+    { nav: "profile", image: images.profile },
   ];
 
   return (
-    <SafeAreaView className="m-4">
+    <SafeAreaView className="m-4 flex-1">
+      <View className="flex-row justify-between">
+        <Image source={images.grid} />
+        <View className="flex-row justify-center items-center">
+          <Image source={images.location} className="m-2" />
+          <Text>Rajshahi</Text>
+          <Image source={images.down} className="m-2" />
+        </View>
+        <Image source={images.notification} />
+      </View>
+
       <View className="mb-4">
         <Text className="text-4xl">
           Good Afternoon, <Text className="text-primary-500">Rehan</Text>
@@ -66,24 +87,59 @@ const Home = () => {
       </View>
 
       {/* Meal section */}
-      <View className="py-4">
-        <View className="flex-row justify-between items-center mb-4">
-          <Text className="text-lg font-semibold">Today's Meal</Text>
-        </View>
-
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {meals.map((item) => (
-            <TouchableOpacity
-              key={item.meal}
-              onPress={() => setMeal(item.meal)}
-              className={`w-20 h-20 items-center justify-center mx-2 rounded-full ${
-                meal === item.meal ? "bg-green-100" : "bg-gray-200"
-              }`}
-            >
-              <Image source={item.image} className="w-14 h-14" />
-            </TouchableOpacity>
+      <ScrollView contentContainerStyle={{ padding: 8 }}>
+        {meals
+          .reduce((rows, item, index) => {
+            // Every 2 cards, create a new row
+            if (index % 2 === 0) rows.push([]);
+            rows[rows.length - 1].push(item);
+            return rows;
+          }, [])
+          .map((row, rowIndex) => (
+            <View key={rowIndex} className="flex-row justify-between mb-4">
+              {row.map((card) => (
+                <MenuCard
+                  key={card.title}
+                  title={card.title}
+                  image={card.image}
+                />
+              ))}
+            </View>
           ))}
-        </ScrollView>
+      </ScrollView>
+
+      {/* NavBar */}
+      <View className="absolute bottom-0 left-0 right-0 m-4 w-[90%] h-20 flex-row justify-around items-center bg-white py-2 shadow-lg border-t border-gray-200 rounded-xl">
+        <NavItem
+          key={item[0].nav}
+          title={item[0].nav}
+          onPress={() => {
+            router.replace(`/(tab)/${item[0].nav}`);
+            // router.replace("/(tab)/meal");
+          }}
+          isActive={navActive === item[0].nav}
+          image={item[0].image}
+        />
+        <View className="bg-primary-100 rounded-full w-20 h-20 justify-center items-center">
+          <NavItem
+            key={item[1].nav}
+            title={item[1].nav}
+            onPress={() => {
+              router.replace(`/(tab)/${item[1].nav}`);
+            }}
+            isActive={navActive === item[1].nav}
+            image={item[1].image}
+          />
+        </View>
+        <NavItem
+          key={item[2].nav}
+          title={item[2].nav}
+          onPress={() => {
+            router.replace(`/(tab)/${item[2].nav}`);
+          }}
+          isActive={navActive === item[2].nav}
+          image={item[2].image}
+        />
       </View>
     </SafeAreaView>
   );
