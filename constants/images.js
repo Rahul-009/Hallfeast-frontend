@@ -10,13 +10,13 @@ import eyehide from "../assets/images/icons/eye-hide.png";
 import arrowCircle from "../assets/images/icons/arrowCircle.png";
 import arrowCircleDark from "../assets/images/icons/arrowCircleDark.png";
 import arrowLeft from "../assets/images/icons/arrow-left.png";
-import google from "../assets/images/icons/google.png";
-import facebook from "../assets/images/icons/facebook.png";
-import apple from "../assets/images/icons/apple.png";
 import chevronRight from "../assets/images/icons/chevron-right.png";
-import applePay from "../assets/images/icons/applePay.png";
 import cart from "../assets/images/icons/cart.png";
 import trash from "../assets/images/icons/trash.png";
+
+import visa from "../assets/images/icons/visa.png";
+import bkash from "../assets/images/icons/bkash.png";
+import applePay from "../assets/images/icons/applePay.png";
 
 
 //dishes
@@ -43,4 +43,7 @@ export default {
   dish2,
   dish3,
   trash,
+  bkash,
+  applePay,
+  visa,
 };
