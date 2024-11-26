@@ -24,7 +24,7 @@ const SignIn = () => {
   return (
     <SignLayout image={images.SignInBg}>
       <View className="w-full h-full px-4 my-6">
-        <Text className="text-2xl text-dark-900 font-semibold mt-10">
+        <Text className="text-center text-2xl text-dark-900 font-semibold mb-10">
           Sign In
         </Text>
 
@@ -47,7 +47,7 @@ const SignIn = () => {
         <CustomButton
           title="Sign In"
           handlePress={submit}
-          containerStyles="mt-7"
+          containerStyles="mt-7 h-14"
           isLoading={isSubmitting}
         />
         <View className="justify-center pt-5 flex-row gap-2">

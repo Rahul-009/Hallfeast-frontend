@@ -1,4 +1,11 @@
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  Modal,
+  Pressable,
+} from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
@@ -27,6 +34,7 @@ const cartData = [
 
 const myMeal = () => {
   const [activeItem, setactiveItem] = useState(1);
+  const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <SafeAreaView className="h-screen flex justify-between">
@@ -47,11 +55,33 @@ const myMeal = () => {
             isActive={activeItem == item.id}
             onPress={() => {
               setactiveItem(item.id);
+              setModalVisible(true);
             }}
           />
         ))}
       </View>
-      {/* <CustomButton title="Checkout" containerStyles="m-4" /> */}
+
+      {/* Modal */}
+      <Modal
+        transparent={true}
+        visible={modalVisible}
+        animationType="slide"
+        onRequestClose={() => setModalVisible(false)}
+      >
+        <View className="flex-1 items-center justify-center bg-black/50">
+          <View className="w-96 bg-white rounded-lg p-6 justify-center items-center">
+            <Image source={images.dish1} className="mb-8 w-full h-80" />
+            <Pressable
+              className="bg-primary-500 px-4 py-2 rounded-xl w-60 mb-4"
+              onPress={() => setModalVisible(false)}
+            >
+              <Text className="text-white font-semibold text-center">
+                Close
+              </Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
     </SafeAreaView>
   );
 };

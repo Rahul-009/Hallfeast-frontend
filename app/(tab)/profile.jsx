@@ -30,15 +30,15 @@ export default function ProfileScreen() {
   };
 
   const menuItems = [
-    { title: "Profile information" },
-    { title: "Order History" },
-    { title: "Location" },
-    { title: "Payment Method" },
-    { title: "Gift Voucher" },
-    { title: "Refer a friend" },
+    { title: "Profile information", pagePath: "" },
+    { title: "Order History", pagePath: "" },
+    { title: "Select your plan", pagePath: "/(tab)/plans" },
+    { title: "Location", pagePath: "" },
+    { title: "Gift Voucher", pagePath: "" },
+    { title: "Refer a friend", pagePath: "" },
     { title: "Push notification", isSwitch: true },
-    { title: "Contact Us" },
-    { title: "Logout" },
+    { title: "Contact Us", pagePath: "" },
+    { title: "Logout", pagePath: "" },
   ];
 
   return (
@@ -51,6 +51,13 @@ export default function ProfileScreen() {
         <View className="m-5 ">
           {menuItems.map((item, index) => (
             <TouchableOpacity
+              onPress={
+                item.pagePath
+                  ? () => {
+                      router.replace(item.pagePath);
+                    }
+                  : () => {}
+              }
               key={index}
               className="flex-row items-center justify-between px-4 py-3"
               // activeOpacity={item.isSwitch ? 1 : 0.7} // Disable click opacity for switch rows

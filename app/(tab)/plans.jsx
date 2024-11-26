@@ -11,11 +11,11 @@ const Plans = () => {
   const [activeCard, setActiveCard] = useState("week");
 
   const handleBack = () => {
-    console.log("Go Back");
+    router.replace("/(tab)/profile");
   };
 
   const handlePress = () => {
-    router.replace("/(tab)/profile");
+    router.replace("/(tab)/checkout");
   };
 
   const plans = [
@@ -43,7 +43,7 @@ const Plans = () => {
 
         <CustomButton
           title="Select your plan"
-          containerStyles="m-6"
+          containerStyles="m-6 h-14"
           handlePress={handlePress}
         />
       </View>

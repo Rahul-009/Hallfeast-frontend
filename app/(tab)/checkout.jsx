@@ -1,13 +1,14 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 
-import Header from "../../components/Header"
+import Header from "../../components/Header";
 import Card from "../../components/Card";
-import FormField from "../../components/FormField"
+import FormField from "../../components/FormField";
 
 import images from "../../constants/images";
 import CustomButton from "../../components/CustomButton";
+import { router } from "expo-router";
 
 const Checkout = () => {
   // State to manage the selected payment method
@@ -25,19 +26,21 @@ const Checkout = () => {
     { id: "apple", label: "Apple Pay", icon: images.applePay },
   ];
 
-
   return (
-    
-
     <SafeAreaView className="h-screen justify-between">
       <View>
-        <Header title="Checkout"/>
+        <Header
+          title="Checkout"
+          handleBack={() => {
+            router.replace("/(tab)/plans");
+          }}
+        />
         <Card
           plan="week"
           days="7"
           isActive={true}
           cost="2000"
-          onPress={()=>{}}
+          onPress={() => {}}
         />
         <View className="px-4 py-4">
           <Text className="text-lg font-semibold mb-4">Payment method</Text>
@@ -60,10 +63,9 @@ const Checkout = () => {
               </TouchableOpacity>
             ))}
           </View>
-
         </View>
-        </View>
-        <CustomButton title="Proceed to pay" containerStyles="m-4"/>
+      </View>
+      <CustomButton title="Proceed to pay" containerStyles="m-4 h-14" />
     </SafeAreaView>
   );
 };

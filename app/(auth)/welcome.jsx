@@ -48,7 +48,7 @@ const Onboarding = () => {
               <CustomButton
                 title="Get Started"
                 handlePress={submit}
-                containerStyles="w-80 mt-7"
+                containerStyles="w-80 mt-7 h-14"
               />
             </View>
           </View>

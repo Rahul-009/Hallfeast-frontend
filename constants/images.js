@@ -27,6 +27,11 @@ import home from "../assets/images/icons/home.png";
 import catering from "../assets/images/icons/catering.png";
 import profile from "../assets/images/icons/avatar.png";
 
+import heart from "../assets/images/icons/heart.png";
+import redHeart from "../assets/images/icons/redHeart.png";
+import fire from "../assets/images/icons/fire.png";
+import star from "../assets/images/icons/star.png";
+
 //dishes
 import SignInBg from "../assets/images/dishes/image 17.png";
 import SignUpBg from "../assets/images/dishes/image 18.png";
@@ -61,4 +66,8 @@ export default {
   profile,
   down,
   location,
+  heart,
+  redHeart,
+  fire,
+  star,
 };

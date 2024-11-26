@@ -7,7 +7,7 @@ import images from "../constants/images";
 
 const Home = () => {
   return (
-    <Redirect href="/(tab)/home" />
+    <Redirect href="/(auth)/welcome" />
     // <View className="bg-primary-100">
     //   <Text>Hello</Text>
     //   <Image source={images.img} />
