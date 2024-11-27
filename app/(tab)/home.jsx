@@ -27,9 +27,9 @@ const Home = () => {
 
   const meals = [
     { title: "Lunch", image: images.dish1 },
-    { title: "Dinner", image: images.dish1 },
-    { title: "Breakfast", image: images.dish1 },
-    { title: "Snacks", image: images.dish1 },
+    { title: "Dinner", image: images.dish2 },
+    { title: "Breakfast", image: images.dish3 },
+    { title: "Snacks", image: images.dish4 },
   ];
 
   const item = [

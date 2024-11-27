@@ -7,6 +7,7 @@ import {
   Pressable,
 } from "react-native";
 import React, { useState } from "react";
+import QRCode from "react-native-qrcode-svg";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
 import images from "@/constants/images";
@@ -70,7 +71,10 @@ const myMeal = () => {
       >
         <View className="flex-1 items-center justify-center bg-black/50">
           <View className="w-96 bg-white rounded-lg p-6 justify-center items-center">
-            <Image source={images.dish1} className="mb-8 w-full h-80" />
+            {/* <Image source={images.dish1} className="mb-8 w-full h-80" /> */}
+            <View className="mb-6 mt-8">
+              <QRCode value="www.hallfeast.com" size={200} />
+            </View>
             <Pressable
               className="bg-primary-500 px-4 py-2 rounded-xl w-60 mb-4"
               onPress={() => setModalVisible(false)}

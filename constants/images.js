@@ -38,6 +38,7 @@ import SignUpBg from "../assets/images/dishes/image 18.png";
 import dish1 from "../assets/images/dishes/img-1.png";
 import dish2 from "../assets/images/dishes/img-2.png";
 import dish3 from "../assets/images/dishes/img-3.png";
+import dish4 from "../assets/images/dishes/img-4.png";
 
 export default {
   ellipse,
@@ -55,6 +56,7 @@ export default {
   dish1,
   dish2,
   dish3,
+  dish4,
   trash,
   bkash,
   applePay,
