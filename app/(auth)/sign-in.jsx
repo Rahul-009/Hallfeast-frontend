@@ -4,9 +4,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import images from "../../constants/images";
 import FormField from "../../components/FormField";
 import CustomButton from "../../components/CustomButton";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, router } from "expo-router";
 import SignLayout from "@/components/SignLayout";
+
+import axios from "axios";
 
 const SignIn = () => {
   const [form, setForm] = useState({
@@ -16,8 +18,22 @@ const SignIn = () => {
   });
 
   const [isSubmitting, setisSubmitting] = useState(false);
+  const [isLoading, setisLoading] = useState(false);
+
+  const fetchData = async () => {
+    try {
+      setisLoading(true);
+      const response = axios.get(url);
+      console.log(response?.data);
+    } catch (error) {
+      console.log(error.response?.data);
+    } finally {
+      setisLoading(false);
+    }
+  };
 
   const submit = () => {
+    fetchData();
     router.replace("/(tab)/home");
   };
 
