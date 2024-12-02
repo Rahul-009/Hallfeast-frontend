@@ -12,7 +12,6 @@ import axios from "axios";
 
 const SignIn = () => {
   const [form, setForm] = useState({
-    name: "",
     email: "",
     password: "",
   });
@@ -20,10 +19,12 @@ const SignIn = () => {
   const [isSubmitting, setisSubmitting] = useState(false);
   const [isLoading, setisLoading] = useState(false);
 
+  const url = "https://api.hallfeast.com/api/v1/auth/login";
+
   const fetchData = async () => {
     try {
       setisLoading(true);
-      const response = axios.get(url);
+      const response = axios.get(url, { form });
       console.log(response?.data);
     } catch (error) {
       console.log(error.response?.data);
