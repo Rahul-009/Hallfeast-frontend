@@ -12,21 +12,25 @@ import axios from "axios";
 
 const SignIn = () => {
   const [form, setForm] = useState({
-    name: "",
     email: "",
-    password: "",
+    password_hash: "",
   });
 
   const [isSubmitting, setisSubmitting] = useState(false);
   const [isLoading, setisLoading] = useState(false);
 
+  const url = "https://api.hallfeast.com/api/v1/auth/login";
+
   const fetchData = async () => {
     try {
       setisLoading(true);
-      const response = axios.get(url);
-      console.log(response?.data);
+      const response = await axios.post(url, form);
+      const token = response?.data.token;
+      // console.log(response?.data);
+      router.replace("/(tab)/home");
     } catch (error) {
       console.log(error.response?.data);
+      alert(error.response?.data.message);
     } finally {
       setisLoading(false);
     }
@@ -34,7 +38,6 @@ const SignIn = () => {
 
   const submit = () => {
     fetchData();
-    router.replace("/(tab)/home");
   };
 
   return (
@@ -55,7 +58,7 @@ const SignIn = () => {
         <FormField
           title="Password"
           value={form.password}
-          handleChangeText={(e) => setForm({ ...form, password: e })}
+          handleChangeText={(e) => setForm({ ...form, password_hash: e })}
           otherStyles="mt-7"
           placeholder="password"
         />
