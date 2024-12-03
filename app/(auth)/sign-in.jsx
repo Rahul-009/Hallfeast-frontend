@@ -1,5 +1,7 @@
 import { Image, ScrollView, Dimensions, Alert, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import * as SecureStore from "expo-secure-store";
+import jwtDecode from "jwt-decode";
 
 import images from "../../constants/images";
 import FormField from "../../components/FormField";
@@ -13,7 +15,7 @@ import axios from "axios";
 const SignIn = () => {
   const [form, setForm] = useState({
     email: "",
-    password: "",
+    password_hash: "",
   });
 
   const [isSubmitting, setisSubmitting] = useState(false);
@@ -21,13 +23,24 @@ const SignIn = () => {
 
   const url = "https://api.hallfeast.com/api/v1/auth/login";
 
+
+  const setAuthToken = async (token) => {
+    await SecureStore.setItemAsync("authToken", token);
+    set({ authToken: token });
+  };
+
   const fetchData = async () => {
     try {
       setisLoading(true);
-      const response = axios.get(url, { form });
-      console.log(response?.data);
+      const response = await axios.post(url, form);
+      setAuthToken(response?.data.token);
+
+      // console.log(decoded);
+      router.replace("/(tab)/home");
+
     } catch (error) {
       console.log(error.response?.data);
+      alert(error.response?.data.message);
     } finally {
       setisLoading(false);
     }
@@ -35,7 +48,6 @@ const SignIn = () => {
 
   const submit = () => {
     fetchData();
-    router.replace("/(tab)/home");
   };
 
   return (
@@ -56,7 +68,7 @@ const SignIn = () => {
         <FormField
           title="Password"
           value={form.password}
-          handleChangeText={(e) => setForm({ ...form, password: e })}
+          handleChangeText={(e) => setForm({ ...form, password_hash: e })}
           otherStyles="mt-7"
           placeholder="password"
         />

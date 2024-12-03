@@ -1,7 +1,10 @@
 import { View, Text, ScrollView, TouchableOpacity, Image } from "react-native";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
+import * as SecureStore from "expo-secure-store";
+import JWT, { SupportedAlgorithms } from "expo-jwt";
+import axios from "axios";
 
 import images from "@/constants/images";
 
@@ -13,6 +16,7 @@ const Home = () => {
   const [selectedDate, setSelectedDate] = useState("25");
   const [meal, setMeal] = useState("lunch");
   const [navActive, setNavActive] = useState("home"); // Track active tab
+  const [user, setUser] = useState({});
 
   // Example data for dates (you can generate dynamically as needed)
   const dates = [
@@ -38,6 +42,37 @@ const Home = () => {
     { nav: "profile", image: images.profile },
   ];
 
+  const loadAuthToken = async () => {
+    const token = await SecureStore.getItemAsync("authToken");
+    return token;
+  };
+
+  // const n = JSON.stringify(user.name);
+  // const firstname = n.split(" ")[0];
+  const fetchData = async () => {
+    try {
+      const t = await loadAuthToken();
+      console.log(t);
+
+      const key = "team_pati_hash";
+      const decoded = JWT.decode(t, key);
+      const userId = decoded.user_id;
+      const url = `https://api.hallfeast.com/api/v1/users/${userId}`;
+      const res = await axios.get(url);
+      console.log(res?.data);
+      setUser(res?.data);
+    } catch (error) {
+      console.log(error);
+      alert(error);
+    } finally {
+      setisLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <SafeAreaView className="m-4 flex-1">
       <View className="flex-row justify-between">
@@ -52,9 +87,9 @@ const Home = () => {
 
       <View className="mb-4">
         <Text className="text-4xl">
-          Good Afternoon, <Text className="text-primary-500">Rehan</Text>
+          Good Afternoon, <Text className="text-primary-500">{user.name}</Text>
         </Text>
-        <Text className="text-gray-400">Choose the right meal for you</Text>
+        <Text className="text-gray-400">{`Points ${user.points_balance}`}</Text>
       </View>
 
       {/* Date Section */}
