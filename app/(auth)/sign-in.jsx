@@ -23,6 +23,7 @@ const SignIn = () => {
 
   const url = "https://api.hallfeast.com/api/v1/auth/login";
 
+
   const setAuthToken = async (token) => {
     await SecureStore.setItemAsync("authToken", token);
     set({ authToken: token });
@@ -36,6 +37,7 @@ const SignIn = () => {
 
       // console.log(decoded);
       router.replace("/(tab)/home");
+
     } catch (error) {
       console.log(error.response?.data);
       alert(error.response?.data.message);

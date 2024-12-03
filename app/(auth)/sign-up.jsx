@@ -76,6 +76,9 @@ const SignUp = () => {
 
   useEffect(() => {
     fetchUniversities();
+  }, []);
+
+  useEffect(() => {
     fetchHalls();
   }, [selectedUni]);
 
