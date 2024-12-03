@@ -1,5 +1,7 @@
 import { Image, ScrollView, Dimensions, Alert, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import * as SecureStore from "expo-secure-store";
+import jwtDecode from "jwt-decode";
 
 import images from "../../constants/images";
 import FormField from "../../components/FormField";
@@ -21,12 +23,18 @@ const SignIn = () => {
 
   const url = "https://api.hallfeast.com/api/v1/auth/login";
 
+  const setAuthToken = async (token) => {
+    await SecureStore.setItemAsync("authToken", token);
+    set({ authToken: token });
+  };
+
   const fetchData = async () => {
     try {
       setisLoading(true);
       const response = await axios.post(url, form);
-      const token = response?.data.token;
-      // console.log(response?.data);
+      setAuthToken(response?.data.token);
+
+      // console.log(decoded);
       router.replace("/(tab)/home");
     } catch (error) {
       console.log(error.response?.data);
