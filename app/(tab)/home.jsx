@@ -89,7 +89,7 @@ const Home = () => {
         <Text className="text-4xl">
           Good Afternoon, <Text className="text-primary-500">{user.name}</Text>
         </Text>
-        <Text className="text-gray-400">Choose the right meal for you</Text>
+        <Text className="text-gray-400">{`Points ${user.points_balance}`}</Text>
       </View>
 
       {/* Date Section */}
